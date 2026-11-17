@@ -13,10 +13,12 @@ jobs:
           java-version: 11
       - name: Android platform 30
         run: |
+          export JAVA_HOME=$JAVA_HOME_17_X64
+          export PATH=$JAVA_HOME/bin:$PATH
           yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
           "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platforms;android-30" "build-tools;30.0.3"
       - name: Giai nen project
-        run: unzip -q DpadMouse.zip
+        run: unzip -q DpadMouse*.zip
       - name: Tai Gradle 6.7.1
         run: |
           wget -q https://services.gradle.org/distributions/gradle-6.7.1-bin.zip
